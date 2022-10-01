@@ -1,2 +1,2 @@
-# wo-worries-api
+# no-worries-chat-api
 API Backend

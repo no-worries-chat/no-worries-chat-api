@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = ">=0.85.0"
+uvicorn = ">=0.18.3"
+pydantic = {extras = ["dotenv"], version = ">=0.21"}
+pymongo = ">=4.2.0"
+motor = ">=3.0.0"
+
+[dev-packages]
+flake8 = ">=5.0.4"
+
+[requires]
+python_version = "3.9"
