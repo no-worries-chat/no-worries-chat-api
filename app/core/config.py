@@ -31,7 +31,11 @@ class Settings(BaseSettings):
     MONGODB_URL: Optional[str]
 
     @validator("MONGODB_URL", pre=True)
-    def assemble_db_connection(cls, v: Optional[str], values: Dict[str, Any]) -> Any:
+    def assemble_db_connection(
+        cls,
+        v: Optional[str],
+        values: Dict[str, Any],
+    ) -> str:
         if isinstance(v, str):
             return v
         return MongoDsn.build(
