@@ -21,11 +21,11 @@ class Settings(BaseSettings):
             return v
         raise ValueError(v)
 
-    DB_USER: str
-    DB_PASSWORD: str
-    DB_HOST: str
-    DB_PORT: str
-    DB_NAME: str
+    MONGODB_USERNAME: str
+    MONGODB_PASSWORD: str
+    MONGODB_DATABASE: str
+    MONGODB_INITIAL_PRIMARY_HOST: str
+    MONGODB_PORT_NUMBER: str
     DB_QUERY: Optional[str]
 
     MONGODB_URL: Optional[str]
@@ -39,12 +39,12 @@ class Settings(BaseSettings):
         if isinstance(v, str):
             return v
         return MongoDsn.build(
-            scheme="mongodb+srv",
-            user=values.get("DB_USER"),
-            password=values.get("DB_PASSWORD"),
-            host=values.get("DB_HOST"),
-            port=values.get("DB_PORT"),
-            path=f"/{values.get('DB_NAME') or ''}",
+            scheme="mongodb",
+            user=values.get("MONGODB_USERNAME"),
+            password=values.get("MONGODB_PASSWORD"),
+            host=values.get("MONGODB_INITIAL_PRIMARY_HOST"),
+            port=values.get("MONGODB_PORT_NUMBER"),
+            path=f"/{values.get('MONGODB_DATABASE') or ''}",
             query=values.get("DB_QUERY"),
         )
 
